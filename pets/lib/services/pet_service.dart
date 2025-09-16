@@ -1,4 +1,4 @@
-// lib/services/pet_service.dart
+
 import 'dart:async';
 import 'package:uuid/uuid.dart';
 import '../models/pet.dart';
@@ -11,14 +11,13 @@ abstract class PetService {
   Future<Pet?> getById(String id);
 }
 
-/// Implementação local em memória (útil para testes).
-/// Substitua por uma implementação HTTP (HttpPetService) quando tiver o Node.
+
 class LocalPetService implements PetService {
   final List<Pet> _store = [];
   final _uuid = const Uuid();
 
   LocalPetService() {
-    // dados de exemplo (opcional)
+    
     final now = DateTime.now();
     _store.addAll([
       Pet(
@@ -42,7 +41,7 @@ class LocalPetService implements PetService {
     ]);
   }
 
-  // Simula latência de rede (opcional)
+  
   Future<T> _withDelay<T>(T Function() fn) async {
     await Future.delayed(const Duration(milliseconds: 250));
     return fn();

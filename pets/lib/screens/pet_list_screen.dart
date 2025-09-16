@@ -1,4 +1,4 @@
-// lib/screens/pet_list_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -21,7 +21,7 @@ class _PetListScreenState extends State<PetListScreen> {
   @override
   void initState() {
     super.initState();
-    // Carrega pets quando a tela é criada
+    
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       final provider = Provider.of<PetProvider>(context, listen: false);
       await provider.loadPets();
@@ -49,11 +49,11 @@ class _PetListScreenState extends State<PetListScreen> {
     if (confirmed == true) {
       final provider = Provider.of<PetProvider>(context, listen: false);
       try {
-        await provider.deletePet(id); // método já faz optimistic remove + rollback se falhar
+        await provider.deletePet(id); 
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Registro excluído')));
       } catch (e) {
-        // Em caso de erro, provider já deve ter restaurado o item.
-        // Forçamos uma recarga para garantir consistência e mostramos mensagem ao usuário.
+        
+        
         try {
           await provider.loadPets();
         } catch (_) {}
@@ -99,7 +99,7 @@ class _PetListScreenState extends State<PetListScreen> {
         itemBuilder: (context, index) {
           final pet = pets[index];
 
-          // textos dinâmicos
+          
           final entrada = _dateFormat.format(pet.dataEntrada);
           final diariasAgora = pet.diariasAteOMomento;
           final previsao = pet.dataSaidaPrevista != null ? _dateFormat.format(pet.dataSaidaPrevista!) : '—';

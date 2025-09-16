@@ -1,9 +1,9 @@
-// lib/models/pet.dart
+
 class Pet {
-  final String id; // usamos String para compatibilidade (id do servidor pode ser número)
+  final String id; 
   final String nomeTutor;
   final String contatoTutor;
-  final String especie; // "Cachorro" | "Gato"
+  final String especie; 
   final String raca;
   final DateTime dataEntrada;
   final DateTime? dataSaidaPrevista;
@@ -49,13 +49,13 @@ class Pet {
       'contatoTutor': contatoTutor,
       'especie': especie,
       'raca': raca,
-      // envia apenas a parte da data no formato YYYY-MM-DD (DATEONLY)
+      
       'dataEntrada': dataEntrada.toIso8601String().split('T').first,
       'dataSaidaPrevista': dataSaidaPrevista?.toIso8601String().split('T').first,
     };
   }
 
-  // copyWith para criar cópias modificadas (útil em LocalPetService)
+  
   Pet copyWith({
     String? id,
     String? nomeTutor,
@@ -76,7 +76,7 @@ class Pet {
     );
   }
 
-  // getters utilitários (diárias)
+  
   int get diariasAteOMomento {
     final now = DateTime.now();
     final start = DateTime(dataEntrada.year, dataEntrada.month, dataEntrada.day);

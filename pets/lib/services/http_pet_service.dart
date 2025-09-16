@@ -21,21 +21,18 @@ class HttpPetService implements PetService {
   Future<Pet> create(Pet pet) async {
     final url = Uri.parse('$baseUrl/pets');
     final body = jsonEncode(pet.toJson());
-    print('[HttpPetService] POST $url  body: $body');
     try {
       final resp = await http.post(
         url,
         headers: {'Content-Type': 'application/json'},
         body: body,
       );
-      print('[HttpPetService] response ${resp.statusCode}: ${resp.body}');
       if (resp.statusCode == 200 || resp.statusCode == 201) {
         return Pet.fromJson(jsonDecode(resp.body));
       } else {
         throw Exception('Erro ao criar pet: ${resp.statusCode} ${resp.body}');
       }
     } catch (e, st) {
-      print('[HttpPetService] EXCEPTION create: $e\n$st');
       rethrow;
     }
   }
@@ -56,16 +53,13 @@ class HttpPetService implements PetService {
   @override
   Future<void> delete(String id) async {
     final url = Uri.parse('$baseUrl/pets/$id');
-    print('[HttpPetService] DELETE $url');
     try {
       final resp = await http.delete(url);
-      print('[HttpPetService] DELETE response ${resp.statusCode}: ${resp.body}');
       if (resp.statusCode != 200 && resp.statusCode != 204) {
         throw Exception('Erro ao deletar pet: ${resp.statusCode} ${resp.body}');
       }
     } catch (e, st) {
-      print('[HttpPetService] EXCEPTION delete: $e\n$st');
-      rethrow; // deixa a camada acima (provider/UI) decidir o que fazer
+      rethrow; 
     }
   }
 

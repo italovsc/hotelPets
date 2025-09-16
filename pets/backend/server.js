@@ -1,9 +1,9 @@
-// backend/server.js
+
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const sequelize = require('./db');
-const Pet = require('./models/Pet'); // importa o modelo
+const Pet = require('./models/Pet');
 const petsRoutes = require('./routes/pets');
 
 const app = express();

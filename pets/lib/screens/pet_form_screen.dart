@@ -1,4 +1,4 @@
-// lib/screens/pet_form_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -18,7 +18,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
   final _formKey = GlobalKey<FormState>();
   final _dateFormat = DateFormat('dd/MM/yyyy');
 
-  // Controllers
+  
   final TextEditingController _nomeTutorCtrl = TextEditingController();
   final TextEditingController _contatoCtrl = TextEditingController();
   final TextEditingController _racaCtrl = TextEditingController();
@@ -35,7 +35,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
   @override
   void initState() {
     super.initState();
-    // Prepara controllers. Caso edição, iremos popular no didChangeDependencies.
+    
     _dataEntradaCtrl.text = _dateFormat.format(_dataEntrada);
   }
 
@@ -43,7 +43,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
 
-    // Checa se veio um Pet nos argumentos — se sim, estamos em edição
+    
     final args = ModalRoute.of(context)?.settings.arguments;
     if (args != null && !_isEdit) {
       if (args is Pet) {
@@ -87,7 +87,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
         if (isEntrada) {
           _dataEntrada = picked;
           _dataEntradaCtrl.text = _dateFormat.format(picked);
-          // If saída is before entrada, clear saída
+          
           if (_dataSaida != null && _dataSaida!.isBefore(_dataEntrada)) {
             _dataSaida = null;
             _dataSaidaCtrl.text = '';
@@ -102,7 +102,6 @@ class _PetFormScreenState extends State<PetFormScreen> {
 
   Future<void> _save() async {
     if (!_formKey.currentState!.validate()) {
-      print('[PetFormScreen] validação falhou');
       return;
     }
 
@@ -121,19 +120,15 @@ class _PetFormScreenState extends State<PetFormScreen> {
     );
 
     try {
-      print('[PetFormScreen] salvando pet: ${pet.toJson()}');
       if (_isEdit) {
         await provider.updatePet(pet);
-        print('[PetFormScreen] updatePet() concluído');
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Registro atualizado')));
       } else {
         await provider.addPet(pet);
-        print('[PetFormScreen] addPet() concluído');
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Pet cadastrado')));
       }
       Navigator.of(context).pop();
     } catch (e, st) {
-      print('[PetFormScreen] ERRO ao salvar: $e\n$st');
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Erro ao salvar: $e')));
     }
   }
@@ -188,7 +183,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
                 ),
                 const SizedBox(height: 12),
 
-                // Data de entrada - picker
+                
                 TextFormField(
                   controller: _dataEntradaCtrl,
                   readOnly: true,
@@ -197,7 +192,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
                 ),
                 const SizedBox(height: 12),
 
-                // Data de saída prevista - opcional
+                
                 TextFormField(
                   controller: _dataSaidaCtrl,
                   readOnly: true,
@@ -209,7 +204,7 @@ class _PetFormScreenState extends State<PetFormScreen> {
                 ),
                 const SizedBox(height: 18),
 
-                // Visualização de cálculo de diárias (pré-visualização)
+                
                 Builder(builder: (ctx) {
                   final entrada = DateTime(_dataEntrada.year, _dataEntrada.month, _dataEntrada.day);
                   final now = DateTime.now();
@@ -237,7 +232,6 @@ class _PetFormScreenState extends State<PetFormScreen> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          print('[PetFormScreen] botão Cadastrar pressionado');
                           _save();
                         },
                         child: Text(_isEdit ? 'Salvar alterações' : 'Cadastrar'),

@@ -1,4 +1,4 @@
-// lib/providers/pet_provider.dart
+
 import 'package:flutter/material.dart';
 import '../models/pet.dart';
 import '../services/pet_service.dart';
@@ -52,28 +52,27 @@ class PetProvider extends ChangeNotifier {
   }
 
   Future<void> deletePet(String id) async {
-    // encontre e remova localmente (optimistic)
+    
     final idx = _pets.indexWhere((p) => p.id == id);
     Pet? removed;
     if (idx >= 0) {
       removed = _pets.removeAt(idx);
-      notifyListeners(); // atualiza UI imediatamente
+      notifyListeners(); 
     }
 
     try {
-      await service.delete(id); // chamada remota
+      await service.delete(id); 
     } catch (e) {
-      // se der erro, restaura o item removido e notifica
+      
       if (removed != null) {
         _pets.insert(idx, removed);
         notifyListeners();
       }
-      rethrow; // opcional: propaga o erro para a UI mostrar snack
+      rethrow; 
     }
   }
 
 
-  /// Retorna Pet se existir, caso contrário `null`.
   Pet? getById(String id) {
     try {
       return _pets.firstWhere((p) => p.id == id);

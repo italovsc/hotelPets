@@ -1,16 +1,16 @@
-// lib/theme.dart
+
 import 'package:flutter/material.dart';
 
-/// Cores base usadas pelo app (ajuste se desejar)
-const Color kPrimary = Color(0xFF4F1F1F); // vinho escuro
-const Color kSurface = Color(0xFF3A1414); // cartão/área mais escura
-const Color kScaffoldBg = Color(0xFF2B0E0E); // fundo geral
-const Color kButton = Color(0xFF8F5F66); // botão rosado acinzentado
-const Color kButtonOn = Color(0xFFF5EAEA); // texto no botão (claro)
-const Color kAccent = Color(0xFFB98B92); // acento (opcional)
-const Color kInputFill = Color(0xFF402020); // campo input
-const Color kHint = Color(0xFFBFA7A7); // hint text
-const Color kOnBackground = Color(0xFFF8EFEF); // texto principal
+
+const Color kPrimary = Color(0xFF4F1F1F); 
+const Color kSurface = Color(0xFF3A1414); 
+const Color kScaffoldBg = Color(0xFF2B0E0E); 
+const Color kButton = Color(0xFF8F5F66); 
+const Color kButtonOn = Color(0xFFF5EAEA); 
+const Color kAccent = Color(0xFFB98B92); 
+const Color kInputFill = Color(0xFF402020); 
+const Color kHint = Color(0xFFBFA7A7); 
+const Color kOnBackground = Color(0xFFF8EFEF); 
 
 final ThemeData appTheme = ThemeData(
   brightness: Brightness.dark,
@@ -26,17 +26,17 @@ final ThemeData appTheme = ThemeData(
     onSurface: kOnBackground,
   ),
 
-  // Tipografia: ajuste fontFamily após incluir fonte no pubspec.yaml se quiser
-  fontFamily: 'Roboto', // troque para sua fonte customizada (ex: 'Raleway', 'YourFont')
+  
+  fontFamily: 'Roboto', 
   textTheme: TextTheme(
-    displayLarge: TextStyle( // usado para grandes títulos
+    displayLarge: TextStyle( 
       fontSize: 38,
       fontStyle: FontStyle.italic,
       fontWeight: FontWeight.w300,
       color: kOnBackground,
       height: 1.05,
     ),
-    headlineSmall: TextStyle( // títulos menores
+    headlineSmall: TextStyle( 
       fontSize: 20,
       fontWeight: FontWeight.w600,
       color: kOnBackground,
@@ -56,7 +56,7 @@ final ThemeData appTheme = ThemeData(
     ),
   ),
 
-  // AppBar
+  
   appBarTheme: AppBarTheme(
     backgroundColor: Colors.transparent,
     elevation: 0,
@@ -70,7 +70,7 @@ final ThemeData appTheme = ThemeData(
     iconTheme: IconThemeData(color: kOnBackground),
   ),
 
-  // Botões elevados (ex: botão "Cadastrar")
+  
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: kButton,
@@ -84,14 +84,14 @@ final ThemeData appTheme = ThemeData(
     ),
   ),
 
-  // Floating action button (se usar)
+  
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: kButton,
     foregroundColor: kButtonOn,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
   ),
 
-  // Input fields
+  
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: kInputFill,
@@ -104,7 +104,7 @@ final ThemeData appTheme = ThemeData(
     errorStyle: TextStyle(color: Colors.red[300]),
   ),
 
-  // Cards usados na lista de pets
+  
   cardTheme: CardTheme(
     color: kSurface,
     elevation: 6,
@@ -112,7 +112,7 @@ final ThemeData appTheme = ThemeData(
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
   ),
 
-  // Divider, icon theme, etc
+  
   dividerColor: Colors.white12,
   iconTheme: IconThemeData(color: kOnBackground),
 );
