@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 const Color kPrimary = Color(0xFF4F1F1F); 
 const Color kSurface = Color(0xFF3A1414); 
 const Color kScaffoldBg = Color(0xFF2B0E0E); 
-const Color kButton = Color(0xFF8F5F66); 
+const Color kButton = Color(0xFF8F5F66);
 const Color kButtonOn = Color(0xFFF5EAEA); 
-const Color kAccent = Color(0xFFB98B92); 
-const Color kInputFill = Color(0xFF402020); 
+const Color kAccent = Color(0xFFB98B92);
+const Color kInputFill = Color(0xFF402020);
 const Color kHint = Color(0xFFBFA7A7); 
 const Color kOnBackground = Color(0xFFF8EFEF); 
 
@@ -19,10 +19,8 @@ final ThemeData appTheme = ThemeData(
   colorScheme: ColorScheme.dark(
     primary: kPrimary,
     secondary: kAccent,
-    background: kScaffoldBg,
-    surface: kSurface,
+    surface: kScaffoldBg,
     onPrimary: kButtonOn,
-    onBackground: kOnBackground,
     onSurface: kOnBackground,
   ),
 
@@ -115,4 +113,12 @@ final ThemeData appTheme = ThemeData(
   
   dividerColor: Colors.white12,
   iconTheme: IconThemeData(color: kOnBackground),
+
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      foregroundColor: kHint, // cor padrão dos TextButtons
+    ),
+  ),
+
 );
+
